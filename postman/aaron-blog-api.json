@@ -235,6 +235,50 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "用戶管理",
+			"description": "處理用戶權限相關的端點",
+			"item": [
+				{
+					"name": "修改用戶管理員權限",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_admin\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/:id/admin-status",
+							"host": ["{{base_url}}"],
+							"path": ["api", "users", ":id", "admin-status"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "用戶 ID"
+								}
+							]
+						},
+						"description": "修改指定用戶的管理員權限狀態（需要管理員權限）"
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"variable": [

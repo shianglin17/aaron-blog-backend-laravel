@@ -163,6 +163,39 @@ Response 200:
 }
 ```
 
+### 用戶權限管理 API
+
+#### 1. 修改用戶權限 (需要管理員權限)
+```
+PUT /users/:id/admin-status
+```
+
+Request Body:
+```json
+{
+  "is_admin": boolean
+}
+```
+
+Response 200:
+```json
+{
+  "message": "用戶權限更新成功",
+  "data": {
+    "id": "string",
+    "name": "string",
+    "email": "string",
+    "is_admin": boolean,
+    "updated_at": "string"
+  }
+}
+```
+
+錯誤回應：
+- 401: 未認證
+- 403: 非管理員權限
+- 404: 用戶不存在
+
 ### 錯誤處理
 
 所有 API 在發生錯誤時會返回以下格式：
