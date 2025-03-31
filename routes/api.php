@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,11 @@ Route::prefix('articles')->group(function () {
     // DELETE /api/articles/{id}
     Route::delete('/{article}', [ArticleController::class, 'destroy'])
         ->name('api.articles.destroy');
+});
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::get('me', [AuthController::class, 'me']);
 });

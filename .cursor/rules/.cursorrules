@@ -8,7 +8,7 @@
 
 - PHP 8.2+
 - Laravel 12
-- MySQL/PostgreSQL
+- MySQL/Postgres/SQLite/MongoDB
 - Redis（快取和隊列）
 - RESTful API
 - PHPUnit（測試）
