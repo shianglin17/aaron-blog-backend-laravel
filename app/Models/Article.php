@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Article extends Model
 {
@@ -17,7 +18,10 @@ class Article extends Model
      */
     protected $fillable = [
         'title',
+        'summary',
         'content',
+        'category',
+        'cover_image',
         'status',
         'published_at',
     ];
@@ -41,4 +45,12 @@ class Article extends Model
     protected $attributes = [
         'status' => 'draft',
     ];
+
+    /**
+     * 取得文章的標籤
+     */
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'article_tags');
+    }
 } 
